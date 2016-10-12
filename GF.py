@@ -5,6 +5,7 @@ from numpyExtend import changeRow;
 from numpyExtend import changeColumn;
 from numpyExtend import getBrightMatrix;
 from numpyExtend import setRow;
+from numpyExtend import print_Matrix;
 
 class GF:
 	def __init__(self, gf):
@@ -29,26 +30,29 @@ class GF:
 		# es gibt mehr spalten als Zeilen,
 		# deswegen jede Spalte quer bis zum Zeilenende runter
 		while column < matrix.shape[0]:
-			columns = getNonZeroInColumn(matrix, column, column);
+			rows = getNonZeroInColumn(matrix, column, column);
 			# es muss mindestens ein eins geben, und zwar die auf dem quer Vektor
-			if columns == []:
-				rows = getNonZeroInRow(matrix, column, column);
+			if rows == []:
+				columns = getNonZeroInRow(matrix, column, column);
 				# wenn es keine weitere eins in der Zeile gibt, ist der Zeilenvektor ein Nullvektor
-				if rows == []:
+				if columns == []:
 					zeroRows.append(column);
 					column+=1;
 					continue;
 
-				changeColumn(matrix, column, rows.pop());
+				changeColumn(matrix, column, columns.pop());
 				
 				continue;
 
-			columns.pop(0);
+			if rows[0] != column:
+				matrix = changeRow(matrix, column, rows[0]);
+
+			rows.pop(0);
 
 			#alle weiteren werden aufsummiert
-			for i in columns:
-				sumRow = self.add(matrix[column].tolist()[0], matrix[i].tolist()[0]);
-				matrix = setRow(matrix, i, sumRow);
+			for row in rows:
+				sumRow = self.add(matrix[column].tolist()[0], matrix[row].tolist()[0]);
+				matrix = setRow(matrix, row, sumRow);
 			
 			column+=1;
 

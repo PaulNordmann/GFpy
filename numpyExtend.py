@@ -46,7 +46,7 @@ def setRow(matrix, row , rowVector):
 	return matrix;
 
 
-def print_Matrix(self, matrix):
+def print_Matrix(matrix):
 	for i in range(matrix.shape[0]):
 		line ="";
 		for j in range(matrix.shape[1]):

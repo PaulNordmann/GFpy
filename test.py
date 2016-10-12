@@ -25,18 +25,14 @@ arr = [
 	[0, 1, 0 , 1],
 	[0, 0, 1 , 1]
 ]
-
-
 print '\t' + str(gf.matrix_rank(np.matrix(arr)) == 3);
-
 
 arr2 = [
 	[1, 1, 0, 0, 0],
 	[0, 1, 1, 0, 0],
 	[0, 0, 1, 1, 0],
 	[0, 0, 0, 0, 1]
-]
-
+];
 print '\t' + str(gf.matrix_rank(np.matrix(arr2)) == 4);
 
 arr3 = [
@@ -44,8 +40,7 @@ arr3 = [
 	[0, 1, 0],
 	[0, 0, 0],
 	[0, 0, 0]
-]
-
+];
 print '\t' + str(gf.matrix_rank(np.matrix(arr3)) == 2);
 
 arr4 = [
@@ -53,8 +48,7 @@ arr4 = [
 	[0, 0, 0],
 	[0, 0, 1],
 	[0, 0, 0]
-]
-
+];
 print '\t' + str(gf.matrix_rank(np.matrix(arr4)) == 2);
 
 arr5 = [
@@ -62,6 +56,13 @@ arr5 = [
 	[0, 0, 0],
 	[0, 1, 0],
 	[0, 0, 0]
-]
-
+];
 print '\t' + str(gf.matrix_rank(np.matrix(arr5)) == 2);
+
+arr6 = [
+	[1, 0, 0],
+	[0, 0, 1],
+	[0, 1, 0],
+	[0, 0, 0]
+];
+print '\t' + str(gf.matrix_rank(np.matrix(arr6)) == 3);
